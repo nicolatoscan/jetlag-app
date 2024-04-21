@@ -1,18 +1,16 @@
 <template>
 
-<v-btn class="toggle-theme" density="comfortable" :icon="theme.global.current.value.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'" @click="toggleTheme"></v-btn>
+  <v-btn class="toggle-theme" density="comfortable" :icon="theme.global.current.value.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'" @click="toggleTheme"></v-btn>
 
-<v-card>
   <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center">
     <v-tab value="flop">Flop</v-tab>
     <v-tab value="province">Province</v-tab>
   </v-tabs>
   <v-window v-model="tab">
-    <v-window-item value="flop"> <Flop /> </v-window-item>
+    <v-window-item value="flop" color="red"> <Flop /> </v-window-item>
     <v-window-item value="province"> <Province /> </v-window-item>
   </v-window>
 
-</v-card>
 </template>
 
 
