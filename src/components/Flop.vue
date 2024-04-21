@@ -21,7 +21,7 @@
     </v-card>
 
     <v-card class="add-card ma-10 pa-5">
-      <v-text-field type="number" label="Challenge ID" clearable  v-model="newFlop" />
+      <v-text-field type="number" label="Challenge ID" class="input-challenge" clearable  v-model="newFlop" />
       <v-btn color="primary" @click="extractFlop(newFlop ? +newFlop : undefined)">{{ newFlop ? 'Add Challenge' : 'Extract random' }}</v-btn>
       <v-btn class="mt-5" color="error" @click="clearAllDiaglog = true">Reset completed</v-btn>
     </v-card>
@@ -173,5 +173,8 @@ function getFlopNumber(id: number | undefined): number | undefined {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.input-challenge {
+  width: 100%;
 }
 </style>
