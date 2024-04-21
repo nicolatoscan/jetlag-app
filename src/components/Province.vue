@@ -10,27 +10,27 @@
 
         <v-row>
           <v-col cols="6" class="counter">
-            <v-btn icon="mdi-minus" size="small" @click="teamStatus.myTeamStars++" />
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.myTeamStars--" />
             <p>{{teamStatus.myTeamStars}} ⭐</p>
-            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.myTeamStars--"/> 
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.myTeamStars++"/> 
           </v-col>
           <v-col cols="6" class="counter text-red">
-            <v-btn icon="mdi-minus" size="small" @click="teamStatus.enemyTeamStars++" />
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.enemyTeamStars--" />
             <p>{{teamStatus.enemyTeamStars}} ⭐</p>
-            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.enemyTeamStars--"/> 
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.enemyTeamStars++"/> 
           </v-col>
         </v-row>
 
         <v-row>
           <v-col cols="6" class="counter">
-            <v-btn icon="mdi-minus" size="small" @click="teamStatus.myTeamCC++" />
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.myTeamCC--" />
             <p>{{teamStatus.myTeamCC}} CC</p>
-            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.myTeamCC--"/> 
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.myTeamCC++"/> 
           </v-col>
           <v-col cols="6" class="counter text-red">
-            <v-btn icon="mdi-minus" size="small" @click="teamStatus.enemyTeamCC++" />
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.enemyTeamCC--" />
             <p>{{teamStatus.enemyTeamCC}} CC</p>
-            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.enemyTeamCC--"/> 
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.enemyTeamCC++"/> 
           </v-col>
         </v-row>
 
