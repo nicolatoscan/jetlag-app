@@ -48,7 +48,7 @@ const challenges: Challenge[] = [{
   random: true
 }, {
   id: 7,
-  title: "Guida turistica [INIZIO COPIATURA DA QUI]",
+  title: "Guida turistica",
   text: "Visita 3 POI, scatta una foto e postala su google con una review dove poni una critica costruttiva.",
   stars: 1
 }, {

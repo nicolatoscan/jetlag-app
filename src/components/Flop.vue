@@ -14,8 +14,9 @@
       </v-card-text>
 
       <v-card-actions>
+        <v-btn color="error" v-if="f.done" @click="toBeRemoved = f.flop; removeDialog = true">Remove</v-btn>
         <v-spacer />
-        <v-btn color="warning" v-if="f.done" @click="unduComplete(f.flop)">Undu</v-btn>
+        <v-btn color="warning" v-if="f.done" @click="undoComplete(f.flop)">undo</v-btn>
         <v-btn color="primary" v-else @click="complete(f.flop)">Completed</v-btn>
       </v-card-actions>
     </v-card>
@@ -31,11 +32,21 @@
   </div>
 
   <v-dialog v-model="clearAllDiaglog" width="auto">
-    <v-card text="Sei sicuro di voler resettare le challenge completate">
+    <v-card text="Sei sicuro di voler resettare le challenge completate?">
       <v-card-actions>
         <v-spacer />
         <v-btn @click="clearAllDiaglog = false">No</v-btn>
         <v-btn color="error" @click="clearCompleted(); clearAllDiaglog = false">Sicurissimo</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+
+  <v-dialog v-model="removeDialog" width="auto">
+    <v-card text="Sei sicuro di voler rimuovere la challenge?">
+      <v-card-actions>
+        <v-spacer />
+        <v-btn @click="removeDialog = false">No</v-btn>
+        <v-btn color="error" @click="removeCompleted(); removeDialog = false">Sicurissimo</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -72,7 +83,15 @@ function complete(flopIndex: number) {
   if (!flopDone.value.includes(flopIndex)) flopDone.value.push(flopIndex);
   saveLocal();
 }
-function unduComplete(flopIndex: number) {
+const removeDialog = ref(false);
+const toBeRemoved = ref(0)
+function removeCompleted() {
+  if (toBeRemoved.value) {
+    flopDone.value = flopDone.value.filter(f => f !== toBeRemoved.value);
+    saveLocal();
+  }
+}
+function undoComplete(flopIndex: number) {
   flopDone.value = flopDone.value.filter(f => f !== flopIndex);
   if (!flop.value.includes(flopIndex)) flop.value.push(flopIndex);
   saveLocal();
