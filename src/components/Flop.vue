@@ -1,7 +1,7 @@
 <template>
   <div class="challenge-wrapper">
 
-    <v-card :class="!f.done ? 'challenge ma-5' : 'challenge ma-5 challenge-completed'" v-for="f in allFlop" :key="f.flop" color="#385F7333" :disabled="f.done" >
+    <v-card :class="!f.done ? 'challenge ma-5' : 'challenge ma-5 challenge-completed'" v-for="f in allFlop" :key="f.flop" color="#385F7333" >
       <v-card-title class="card-title">
         <span>{{ challenges[f.flop].id }} - {{ challenges[f.flop].title }}</span>
         <span>{{ '⭐'.repeat(challenges[f.flop].stars) }} </span>
@@ -13,9 +13,10 @@
         <p>{{ challenges[f.flop].moreText }}</p>
       </v-card-text>
 
-      <v-card-actions v-if="!f.done">
+      <v-card-actions>
         <v-spacer />
-        <v-btn color="primary" @click="complete(f.flop)">Completed</v-btn>
+        <v-btn color="warning" v-if="f.done" @click="unduComplete(f.flop)">Undu</v-btn>
+        <v-btn color="primary" v-else @click="complete(f.flop)">Completed</v-btn>
       </v-card-actions>
     </v-card>
 
@@ -69,6 +70,11 @@ const allFlop = computed(() => [
 function complete(flopIndex: number) {
   flop.value = flop.value.filter(f => f !== flopIndex);
   if (!flopDone.value.includes(flopIndex)) flopDone.value.push(flopIndex);
+  saveLocal();
+}
+function unduComplete(flopIndex: number) {
+  flopDone.value = flopDone.value.filter(f => f !== flopIndex);
+  if (!flop.value.includes(flopIndex)) flop.value.push(flopIndex);
   saveLocal();
 }
 function clearCompleted() {
