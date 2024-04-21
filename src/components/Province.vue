@@ -7,6 +7,33 @@
           <v-col cols="6" class="text-center">Conquiste: {{ summaryConquered.number }} ({{ Math.floor(summaryConquered.area / 100) }} hKm2)</v-col>
           <v-col cols="6" class="text-center text-red">Nemiche: {{ summaryEnemy.number }} ({{ Math.floor(summaryEnemy.area / 100) }} hKm2)</v-col>
         </v-row>
+
+        <v-row>
+          <v-col cols="6" class="counter">
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.myTeamStars++" />
+            <p>{{teamStatus.myTeamStars}} ⭐</p>
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.myTeamStars--"/> 
+          </v-col>
+          <v-col cols="6" class="counter text-red">
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.enemyTeamStars++" />
+            <p>{{teamStatus.enemyTeamStars}} ⭐</p>
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.enemyTeamStars--"/> 
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="6" class="counter">
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.myTeamCC++" />
+            <p>{{teamStatus.myTeamCC}} CC</p>
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.myTeamCC--"/> 
+          </v-col>
+          <v-col cols="6" class="counter text-red">
+            <v-btn icon="mdi-minus" size="small" @click="teamStatus.enemyTeamCC++" />
+            <p>{{teamStatus.enemyTeamCC}} CC</p>
+            <v-btn icon="mdi-plus" size="small"  @click="teamStatus.enemyTeamCC--"/> 
+          </v-col>
+        </v-row>
+
       </v-card-text>
     </v-card>
 
@@ -104,11 +131,42 @@ const status = ref<
 >(getStatus())
 watch(status, saveStatus, { deep: true })
 
+
+function getTeamStatus() {
+  const teamStatus = localStorage.getItem('teamStatus')
+  if (teamStatus) {
+    return JSON.parse(teamStatus)
+  }
+  return {
+    myTeamStars: 0,
+    enemyTeamStars: 0,
+    myTeamCC: 0,
+    enemyTeamCC: 0
+  }
+}
+function saveTeamStatus() {
+  console.log('Saving Team Status')
+  localStorage.setItem('teamStatus', JSON.stringify(teamStatus.value))
+}
+const teamStatus = ref<{
+  myTeamStars: number,
+  enemyTeamStars: number,
+  myTeamCC: number,
+  enemyTeamCC: number
+}>(getTeamStatus())
+watch(teamStatus, saveTeamStatus, { deep: true })
+
 </script>
 <style scoped>
 .indicator {
   width: 3rem;
   height: 100%;
 
+}
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 </style>
