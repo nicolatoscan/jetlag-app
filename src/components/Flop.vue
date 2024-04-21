@@ -23,7 +23,9 @@
 
     <v-card class="add-card ma-10 pa-5">
       <v-text-field type="number" label="Challenge ID" class="input-challenge" clearable  v-model="newFlop" />
-      <v-btn color="primary" @click="extractFlop(newFlop ? +newFlop : undefined)">{{ newFlop ? 'Add Challenge' : 'Extract random' }}</v-btn>
+      <v-btn color="primary"
+        @click="extractFlop(newFlop ? +newFlop : undefined)"
+        >{{ newFlop ? 'Add Challenge' : 'Extract random' }}</v-btn>
       <v-btn class="mt-5" color="error" @click="clearAllDiaglog = true">Reset completed</v-btn>
     </v-card>
 
@@ -62,7 +64,6 @@ const flopDone = ref<number[]>(getLocal('flopDone'));
 function saveLocal() {
   localStorage.setItem('flop', JSON.stringify(flop.value));
   localStorage.setItem('flopDone', JSON.stringify(flopDone.value));
-  console.log('Saved')
 }
 function getLocal(key: string): number[] {
   const storage = localStorage.getItem(key);

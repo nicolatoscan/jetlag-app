@@ -213,6 +213,5 @@ const challengesMap: { [id: number]: Challenge } = {};
 challenges.forEach(c => {
   challengesMap[c.id] = c;
 });
-console.log(challengesMap)
 export default challengesMap;
 

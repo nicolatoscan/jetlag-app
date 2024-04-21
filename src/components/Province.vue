@@ -4,8 +4,8 @@
     <v-card color="blue" variant="tonal" class="ma-5">
       <v-card-text>
         <v-row>
-          <v-col cols="6" class="text-center">Conquiste: {{ summaryConquered.number }} ({{ Math.floor(summaryConquered.area / 100) }} hKm2)</v-col>
-          <v-col cols="6" class="text-center text-red">Nemiche: {{ summaryEnemy.number }} ({{ Math.floor(summaryEnemy.area / 100) }} hKm2)</v-col>
+          <v-col cols="6" class="text-center">Conquiste: {{ summaryConquered.number }} ({{ Math.floor(summaryConquered.area / 100) }} ha)</v-col>
+          <v-col cols="6" class="text-center text-red">Nemiche: {{ summaryEnemy.number }} ({{ Math.floor(summaryEnemy.area / 100) }} ha)</v-col>
         </v-row>
 
         <v-row>
@@ -102,7 +102,6 @@ function getStatus() {
 }
 
 function saveStatus() {
-  console.log('Saving Status')
   localStorage.setItem('status', JSON.stringify(status.value))
 }
 
@@ -145,7 +144,6 @@ function getTeamStatus() {
   }
 }
 function saveTeamStatus() {
-  console.log('Saving Team Status')
   localStorage.setItem('teamStatus', JSON.stringify(teamStatus.value))
 }
 const teamStatus = ref<{
