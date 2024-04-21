@@ -1,0 +1,7 @@
+{
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*", "manifest.ts"],
+  "compilerOptions": {
+    "composite": true,
+    "types": ["node"]
+  }
+}

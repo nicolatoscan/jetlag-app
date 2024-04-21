@@ -1,0 +1,41 @@
+{
+  "name": "jetleg-app",
+  "version": "0.7.2",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit",
+    "release": "dotenv release-it --"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@popperjs/core": "^2.11.8",
+    "@vueup/vue-quill": "^1.2.0",
+    "@vueuse/core": "^10.9.0",
+    "axios": "^1.6.8",
+    "font-awesome": "^4.7.0",
+    "uuid": "^9.0.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vuetify": "^3.5.11"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.4.47",
+    "@mdi/js": "^7.4.47",
+    "@types/node": "^20.11.30",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vue/tsconfig": "^0.5.1",
+    "dotenv-cli": "^7.4.1",
+    "sass": "^1.72.0",
+    "typescript": "~5.4.3",
+    "vite": "^5.2.6",
+    "vite-plugin-pwa": "^0.19.7",
+    "vue-tsc": "^2.0.7",
+    "workbox-window": "^7.0.0"
+  }
+}
